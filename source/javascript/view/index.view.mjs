@@ -1,19 +1,33 @@
 'use strict';
 
+import { Utilitis } from "../view/utilitis.mjs";
+
 export class IndexView {
     #privateBody;
 
     constructor() {
-        document.title = "Hola Mundo";
+        document.title = "Rick y morty";
         this.#privateBody = document.querySelector('body');
     }
 
-    init(name, data) {
-        const paragraph = this.#privateCreateParagraph();
-        paragraph.innerHTML = `Hello World!!! ${name}`;
-        this.#privateBody.append(paragraph);
-        console.log(data);
+    init(listcharacter) {
+         listcharacter.forEach((character)=>{
+             const div = Utilitis.getDiv();
+             const pNAme = Utilitis.getP();
+             const pSpecies = Utilitis.getP();
+             const image = Utilitis.getImage();
+             pNAme.textContent = character.Name;
+             pSpecies.textContent = character.Species;
+             image.src = character.Image;
+             div.append(pNAme,pSpecies,image);
+             this.#privateBody.append(div);
+
+             }
+
+         )
+
     }
+
 
     #privateCreateParagraph() {
         return document.createElement('p');

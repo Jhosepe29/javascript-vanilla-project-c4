@@ -11,8 +11,7 @@ import { IndexView } from "../view/index.view.mjs";
 // Services
 import { RickAndMortyService } from "../model/services/rick-and-morty.service.mjs";
 
-class IndexController {
-
+class Page2Controller{
     #privateRickAndMortyURL;
     #privateView;
 
@@ -21,18 +20,4 @@ class IndexController {
         this.#privateView = new IndexView();
     }
 
-    async init() {
-        const data = new RickAndMortyService(this.#privateRickAndMortyURL);
-        const character = await data.getCharacters();
-        console.log(character);
-        this.#privateView.init(character);
-        }
-        page2(index){
-
-        }
-
-
 }
-
-export const index = new IndexController();
-index.init();
